@@ -1,0 +1,25 @@
+<?php /* $params = $this->getParams(); ?>
+<pre>
+<?php print_r($params) ?>
+</pre>
+
+<?php */ ?>
+<?php 
+$this->prepareCollection();
+if ($products = $this->getProductCollection()):
+?>
+<div style="border: 1px dashed grey; padding: 20px; margin-bottom: 20px">
+<h2 style="text-align: right;"><?= $this->getTitle() ?></h2>
+<h2>Sort: <?= $this->getSort() ?></h2>
+<table>
+<thead>
+<td style="width: 50px;">id</td><td>name</td>
+</thead>
+<tbody>
+<?php foreach ($products->getItems() as $product): ?>
+<tr><td style="width: 50px;"><?= $product->getId()?></td><td><?= $product->getName()?></td></tr>
+<?php endforeach ?>
+</tbody>
+</table>
+</div>
+<?php endif ?>

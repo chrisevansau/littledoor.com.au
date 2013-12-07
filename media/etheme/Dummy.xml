@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<demodata>
+	<cmsblocks>
+		<cmsblock>
+			<id>product_sidebar</id>
+			<title>Product Sidebar</title>
+			<content><![CDATA[<div class="banner banner-transform"><img src="{{media url='/wysiwyg/8theme/Custom-banner1.jpg'}}" />
+<div class="mask">
+<h2>Nice Demo Banner</h2>
+<p>It is a long established fact that a reader will be distracted by the readable content of layout.</p>
+<br /> <a class="info" href="#">Read More</a></div>
+</div>
+<div class="banner banner-transform"><img src="{{media url='/wysiwyg/8theme/Custom-banner1.jpg'}}" />
+<div class="mask">
+<h2>Nice Demo Banner</h2>
+<p>It is a long established fact that a reader will be distracted by the readable content of layout.</p>
+<br /> <a class="info" href="#">Read More</a></div>
+</div>]]></content>
+		</cmsblock>
+		<cmsblock>
+			<id>footer_columns</id>
+			<title>Footer Columns</title>
+			<content><![CDATA[<div class="span3 footer_block1 f-contacts"><span class="footer_title">OUR CONTACTS</span>
+<div class="textwidget">
+<p class="footer-home"><em class="icon-home"></em> United Kingdom, London <br /> Simple Street 15A</p>
+<p class="footer-phone"><em class="icon-phone"></em> (123) 123.456.7890 <br /> (123) 123.456.7890</p>
+<p class="footer-mail"><em class="icon-envelope-alt"></em> megashop@info.com <br /> megashop@holding.com</p>
+</div>
+</div>
+<div class="span3 footer_block1 footer-big-block"><span class="footer_title">ABOUT OUR SHOP</span>
+<div class="textwidget">
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining.</p>
+</div>
+</div>]]></content>
+		</cmsblock>
+		<cmsblock>
+			<id>payments</id>
+			<title>Payments</title>
+			<content><![CDATA[<ul class="footer_copyright_payments hidden-phone">
+<li><a href="#"><img src="{{media url="wysiwyg/8theme/footer-payment1.jpg"}}" alt="" /></a></li>
+<li><a href="#"><img src="{{media url="wysiwyg/8theme/footer-payment2.jpg"}}" alt="" /></a></li>
+<li><a href="#"><img src="{{media url="wysiwyg/8theme/footer-payment3.jpg"}}" alt="" /></a></li>
+<li><a href="#"><img src="{{media url="wysiwyg/8theme/footer-payment4.jpg"}}" alt="" /></a></li>
+<li><a href="#"><img src="{{media url="wysiwyg/8theme/footer-payment5.jpg"}}" alt="" /></a></li>
+<li><a href="#"><img src="{{media url="wysiwyg/8theme/footer-payment6.jpg"}}" alt="" /></a></li>
+</ul>]]></content>
+		</cmsblock>
+		<cmsblock>
+			<id>footer_columns2</id>
+			<title>Footer Columns 2</title>
+			<content><![CDATA[<div class="span3 footer_block1"><span class="footer_title">STORES</span>
+<div class="textwidget">
+<ul class="footer_menu">
+<li><a href="#">New York</a></li>
+<li><a href="#">Paris</a></li>
+<li><a href="#">London</a></li>
+<li><a href="#">Madrid</a></li>
+<li><a href="#">Tokio</a></li>
+<li><a href="#">Milan</a></li>
+<li><a href="#">Hong Kong</a></li>
+</ul>
+</div>
+</div>
+<div class="span3 footer_block1"><span class="footer_title">OUR OFFERS</span>
+<div class="textwidget">
+<ul class="footer_menu">
+<li><a href="#">New products</a></li>
+<li><a href="#">Top sellers</a></li>
+<li><a href="#">Specials</a></li>
+<li><a href="#">Manufacturers</a></li>
+<li><a href="#">Suppliers</a></li>
+<li><a href="#">Specials</a></li>
+<li><a href="#">Customer Service</a></li>
+</ul>
+</div>
+</div>
+<div class="span3 footer_block1"><span class="footer_title">OUR SERVICES</span>
+<div class="textwidget">
+<ul class="footer_menu">
+<li><a href="#">Order tracking</a></li>
+<li><a href="#">Privacy Policy</a></li>
+<li><a href="#">Gift Cards</a></li>
+<li><a href="#">Shipping Information</a></li>
+<li><a href="#">Returns &amp; refunds</a></li>
+<li><a href="#">Personalised Cards</a></li>
+<li><a href="#">Delivery information</a></li>
+</ul>
+</div>
+</div>
+<div class="span3 footer_block1"><span class="footer_title">OUR OFFERS</span>
+<div class="textwidget"><img class="footer-logo" src="{{media url="wysiwyg/8theme/label2-1.png"}}" alt="" /><br /> <img class="footer-logo2" src="{{media url="wysiwyg/8theme/label3-1.png"}}" alt="" /> <img class="footer-logo3" src="{{media url="wysiwyg/8theme/label1-1.png"}}" alt="" /></div>
+</div>]]></content>
+		</cmsblock>
+		<cmsblock>
+			<id>product_custom_tab</id>
+			<title>Product Custom Tab</title>
+			<content><![CDATA[<div class="global-custom-tab"><img class="img-left" src="{{media url="wysiwyg/8theme/customtab.png"}}" alt="" />
+<h3>Custom TEXT/HTML</h3>
+Ultricies sociis ut vel parturient! Tempor! Nec quis turpis placerat ac hac tincidunt, velit, vel sit mauris a, dolor, natoque enim! Etiam risus? Elit, adipiscing dignissim ut et risus sit placerat, penatibus tincidunt, diam sed dignissim rhoncus mus lectus, penatibus arcu sit in mattis porta placerat. Ultricies velit odio. Vel? Aliquam nunc dolor! Nisi, cras, nunc, et auctor? Augue facilisis! Augue eu dis platea sed, placerat hac pid, lectus dapibus turpis in tincidunt arcu rhoncus auctor. Sit duis nascetur vut! Pulvinar egestas, aenean, sagittis odio enim magna, etiam platea nec lundium, nisi, mauris porttitor elementum a. Ultricies sociis ut vel parturient! Tempor! Nec quis turpis placerat ac hac tincidunt, velit, vel sit mauris a, dolor, natoque enim! Etiam risus? Elit, adipiscing dignissim ut et risus sit placerat, penatibus tincidunt, diam sed dignissim rhoncus mus lectus, penatibus arcu sit in mattis porta placerat. Ultricies velit odio. Vel? Aliquam nunc dolor! Nisi, cras, nunc, et auctor? Augue facilisis! Augue eu dis platea sed, placerat hac pid, lectus dapibus turpis in tincidunt arcu rhoncus auctor. Sit duis nascetur vut! Pulvinar egestas, aenean, sagittis odio enim magna, etiam platea nec lundium, nisi, mauris porttitor elementum a.</div>]]></content>
+		</cmsblock>
+		<cmsblock>
+			<id>product_custom_tab2</id>
+			<title>Product Custom Tab 2</title>
+			<content><![CDATA[<div class="custom-tabs1">
+<h3>Custom HTML</h3>
+<img class="img-left" src="{{media url="wysiwyg/8theme/customtab3.png"}}" alt="" />Ultricies sociis ut vel parturient! Tempor! Nec quis turpis placerat ac hac tincidunt, velit, vel sit mauris a, dolor, natoque enim! Etiam risus? Elit, adipiscing dignissim ut et risus sit placerat, penatibus tincidunt, diam sed dignissim rhoncus mus lectus, penatibus arcu sit in mattis porta placerat. Ultricies velit odio. Vel? Aliquam nunc dolor! Nisi, cras, nunc, et auctor? Augue facilisis! Augue eu dis platea sed, placerat hac pid, lectus dapibus turpis in tincidunt arcu rhoncus auctor. Sit duis nascetur vut! Pulvinar egestas, aenean, sagittis odio enim magna, etiam platea nec lundium, nisi, mauris porttitor elementum a, tempor turpis.</div>
+<div class="custom-tabs2">
+<h3>Custom HTML</h3>
+<img class="img-left" src="{{media url="wysiwyg/8theme/customtab4.png"}}" alt="" />Ultricies sociis ut vel parturient! Tempor! Nec quis turpis placerat ac hac tincidunt, velit, vel sit mauris a, dolor, natoque enim! Etiam risus? Elit, adipiscing dignissim ut et risus sit placerat, penatibus tincidunt, diam sed dignissim rhoncus mus lectus, penatibus arcu sit in mattis porta placerat. Ultricies velit odio. Vel? Aliquam nunc dolor! Nisi, cras, nunc, et auctor? Augue facilisis! Augue eu dis platea sed, placerat hac pid, lectus dapibus turpis in tincidunt arcu rhoncus auctor. Sit duis nascetur vut! Pulvinar egestas, aenean, sagittis odio enim magna, etiam platea nec lundium, nisi, mauris porttitor elementum a, tempor turpis.</div>]]></content>
+		</cmsblock>
+		<cmsblock>
+			<id>cat_bottom_banner</id>
+			<title>Category page banner</title>
+			<content><![CDATA[<div class="widget-placeholder">
+<div class="side-icon">&nbsp;</div>
+<div class="side-text">
+<h3>Custom HTML Block</h3>
+Widgetized area where you can put any widget</div>
+<div class="clear">&nbsp;</div>
+</div>]]></content>
+		</cmsblock>
+		<cmsblock>
+			<id>contacts_block</id>
+			<title>Contact information</title>
+			<content><![CDATA[<h3>PLACE FOR NICE TITLE</h3>
+<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
+<h6>CONTACT INFORMATIONS</h6>
+<p>30 South Park Avenue<br />San Francisco, CA 94108<br />USA</p>
+<p><strong>Phone:</strong>&nbsp;(123) 456-7890<br /><strong>Fax:</strong>&nbsp;+08 (123) 456-7890<br /><strong>Email:</strong>&nbsp;<a href="http://8theme.com/dev/theleader/?page_id=1708#">contact@companyname.com</a><br /><strong>Web:</strong>&nbsp;<a href="http://8theme.com/dev/theleader/?page_id=1708#">companyname.com</a></p>]]></content>
+		</cmsblock>
+		<cmsblock>
+			<id>cat_left_banner</id>
+			<title>Category Left Banner</title>
+			<content><![CDATA[<div id="text-7" class="widget-container widget_text">
+<h3 class="widget-title">Custom Banner</h3>
+<div class="textwidget">
+<div class="banner banner-transform"><img src="{{media url="wysiwyg/8theme/left-banner.jpg"}}" alt="" />
+<div class="mask">
+<h2>Nice Demo Banner</h2>
+<p>It is a long established fact that a reader will be distracted by the readable content of page when looking at its layout.</p>
+<a class="button" href="#">Read More</a></div>
+</div>
+</div>
+</div>]]></content>
+		</cmsblock>
+	</cmsblocks>
+</demodata>

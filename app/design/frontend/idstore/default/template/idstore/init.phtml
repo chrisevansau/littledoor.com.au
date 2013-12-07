@@ -1,0 +1,282 @@
+<?php $themeOptions = $this->helper('idstore'); ?>
+<!-- Ajax remove from cart -->
+<script type="text/javascript"> 
+<?php 
+//$enable_ajax = true; 
+if ($themeOptions->ajaxIsEnabled()):
+    $request = $this->getRequest();
+    $module = $request->getModuleName();
+    $controller = $request->getControllerName();
+    $action = $request->getActionName();
+    ?>
+    var onCart = <?php echo ($module == 'checkout' && $controller == 'cart' && $action == 'index') ? 'true' : 'false' ?>;
+    function ajaxRemove(url, lockTopcart) {
+
+        if (typeof(lockTopcart) === "undefined") lockTopcart = false;
+        params = "isAjax/1/";
+        //url += "isAjax/1/";
+        if (onCart)
+            params += "oncart/1/";
+        else 
+            params += "oncart/0/";
+        url = url.replace("checkout/cart/delete", "e_ajax/index/ajaxdelete");
+        
+        if (/___SID=U/.test(url)) {
+            url = url.split(/\?___SID/)[0] + params + "?___SID=U";
+        }
+        else
+            url = url.trim() + params;
+
+        topCart = jQuery('.top-cart');
+        topCartOverlay = jQuery('#header-items .overlay');
+        cartTable = jQuery('.cart');
+        if (lockTopcart) {
+            topCartOverlay.show();
+            topCart.addClass('pending');
+        }
+
+        try {
+            
+            jQuery.ajax( {
+                url: url,
+                dataType: 'json',
+                success: function(data) {
+                    if (data.status == 'SUCCESS') {
+                        topCart.replaceWith(data.topcart);
+                        console.log(topCart);
+                        if (onCart) {
+                            cartTable.replaceWith(data.cart);
+                        }
+                    }
+
+                    else if (data.status == 'ERROR')
+                        alert(data.message);
+                    else 
+                        alert('Error: invalid response');
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert("Error: unable to process the request")
+                    
+                },
+                complete: function() {
+                    if (lockTopcart) {
+                        topCartOverlay.hide();
+                        topCart.removeClass('pending');
+                    }
+                }
+            })
+        }
+        catch (e) {
+            
+        }
+    }
+    
+    <?php else: ?>
+    function ajaxRemove(url) {
+        url = url.replace("checkout/cart/delete", "e_ajax/index/delete");
+        setLocation(url);
+    };
+    <?php endif; ?>
+    function showAjaxProductOptions(id) {
+        jQuery('#fancybox'+id).trigger('click');
+    }
+
+
+    function ajaxSuccessAdded(data, modal, productImg, titleForBox) {
+        var msgHtml;
+
+        if (data.status == 'SUCCESS') {
+            setAjaxData(data);
+            modal.eModal('endLoading')
+                 .eModal('setTitle',titleForBox)
+                 .eModal('addImage', productImg)
+                 .eModal('addText','<?php echo $this->__('was successfully added to your shopping cart.') ?>')
+                 .eModal('addBtn',{
+                        title: '<?php echo $this->__('Continue shopping') ?>',
+                        href: 'javascript:void(0);',
+                        class: 'button small hidewindow',
+                        hideOnClick: true
+                    })
+                 .eModal('addBtn',{
+                        title: '<?php echo $this->__('Checkout') ?>',
+                        href: '<?php echo $this->getUrl('checkout/cart')?>',
+                        class: 'button small arrow-right'
+                    });   
+        } 
+        else {
+            modal.eModal('endLoading')
+                 .eModal('addError', data.message)
+                 .eModal('addBtn',{
+                        title: '<?php echo $this->__('Continue shopping') ?>',
+                        href: 'javascript:void(0);',
+                        class: 'button small hidewindow',
+                        hideOnClick: true
+                    });
+        }								     
+    }
+
+    // from list.phtml
+
+    var modalWindow = jQuery('.btn-cart').eModal();
+        function setLocationAjax(url,id){
+            url += 'isAjax/1';
+            url = url.replace("checkout/cart","e_ajax/index");
+            var productImg = jQuery('#productimgover' + id + ' img').attr('src');
+            var titleForBox = jQuery('#productname' + id).text();
+            modalWindow.eModal('showModal');
+            try {
+                jQuery.ajax( {
+                    url : url,
+                    dataType : 'json',
+                    error: function(data) {
+                        
+                        modalWindow.eModal('endLoading')
+                             .eModal('addError', 'Error with ajax')
+                             .eModal('addBtn',{
+                                    title: '<?php echo $this->__('Continue shopping') ?>',
+                                    href: 'javascript:void(0);',
+                                    class: 'button small hidewindow',
+                                    hideOnClick: true
+                                });                    
+                    },
+                    success : function(data,statusText,xhr ) {
+                        ajaxSuccessAdded(data, modalWindow, productImg, titleForBox);                    
+                    }
+                });
+            } catch (e) {
+            }
+        }
+        
+        
+
+</script>
+
+<?php if ($themeOptions->isResponsiveEnabled()): ?>
+<style type="text/css">
+@import url("<?php echo $this->getSkinUrl('css/large-responsive.css') ?>") (min-width: <?php echo ($themeOptions->getLargeResolutionWidth()) ?  $themeOptions->getLargeResolutionWidth() : '1600'; ?>px);
+</style>
+<?php endif ?>
+<?php 
+
+/* Selectors for color schemes functionality */ 
+
+$selectors = Array();
+$selectors['active_color'] = '
+a:hover,
+.menu > ul > li.over > a,     
+.menu > ul > li.active > a,
+.special-price .price,
+.product-grid .product-name a:hover,
+.footer_menu a:hover,
+.tweets1 a:hover,
+.block-layered-nav dt:hover,
+.block-account .block-content li.current, 
+.block-account .block-content li a:hover,
+.variant1 .menu > ul.menutype1 > li > ul > li > ul > li a:hover, .variant3 .menu > ul.menutype1 > li > ul > li > ul > li a:hover, .variant4 .menu > ul.menutype1 > li > ul > li > ul > li a:hover,
+.left-categories-container .level1.active > a, .left-categories-container .level1 > a:hover, .left-categories-container .level3.active > a, .left-categories-container .level2.active > a,
+#narrow-by-list li:hover, #narrow-by-list a:hover span, #narrow-by-list a:hover, #narrow-by-list2 li:hover, #narrow-by-list2 a:hover span, #narrow-by-list2 a:hover,
+.footer-home:hover em, .footer-phone:hover em, .footer-mail:hover em,
+.after_footer .links a:hover, .widget-placeholder .side-icon:hover i, .checkout-progress li.active,
+.tabs .tab-title.opened,
+.menu > ul > li.block_li:hover .nav_block ul > li.level1 > ul > li > a:hover,
+.menu > ul > li .nav_block .block-with-icon:hover em
+';
+
+$selectors['active_color_imp'] = '';
+
+$selectors['active_bg'] = '
+.tp-leftarrow:hover, 
+.tp-rightarrow:hover,
+.button:hover,
+.button.active,
+.pages li:hover,
+.pages li a.next:hover, 
+.pages li a.previous:hover,
+.header-variant4,
+.header-variant5,
+.variant1 .menu > ul.menutype1 > li > ul > li > ul > li:hover:before, .variant3 .menu > ul.menutype1 > li > ul > li > ul > li:hover:before, .variant4 .menu > ul.menutype1 > li > ul > li > ul > li:hover:before,
+.left-categories-container .opened .btn-show:hover,
+.banner a.info:hover, .product-slider .prev:hover, .product-slider .prev:focus, .product-slider .next:hover, .product-slider .next:focus, .left-categories-container .btn-show:hover,
+.menu > ul > li.block_li:hover .nav_block ul > li.level1 > ul > li:hover:before
+';
+
+$selectors['active_bg2'] = '
+.button.active:hover
+';
+
+$selectors['active_border'] = '
+.menu > ul > li.over > a,     
+.menu > ul > li.active > a,
+.menu > ul > li ul,
+.product-grid:hover,
+.variant2 .menu > ul > li > a:hover,
+.variant1 .menu > ul.menutype1 > li.over > a, .variant1 .menu > ul.menutype1 > li.active > a, .variant1 .menu > ul.menutype1 > li > a:hover, .variant4 .menu > ul.menutype1 > li.over > a, .variant4 .menu > ul.menutype1 > li.active > a, .variant4 .menu > ul.menutype1 > li > a:hover, .checkout-progress li.active
+';
+
+$selectors['brown_color'] = '';
+
+$selectors['brown_bg'] = '';
+
+?>
+
+<!-- google fonts -->
+<?php if ($themeOptions->useGfontHeadings()) : ?>
+<style>
+@import url(http://fonts.googleapis.com/css?family=<?= str_replace(' ','+', $themeOptions->gfontHeadings())?>);
+h1, h2, h3, h4, h5, h6 {font-family: '<?php echo $themeOptions->gfontHeadings() ?>';}
+</style>
+<?php endif ?>
+<?php if ($themeOptions->useGfontMenu()) : ?>
+<style>@import url(http://fonts.googleapis.com/css?family=<?= str_replace(' ','+', $themeOptions->gfontMenu());?>);
+#nav li.level0 > a {font-family: '<?php echo $themeOptions->gfontMenu() ?>';}
+</style>
+<?php endif ?>
+
+
+<style type="text/css">
+    <?php echo $themeOptions->jsString($selectors['brown_color']); ?>               {  color:#818181; }
+    
+    <?php echo $themeOptions->jsString($selectors['brown_bg']); ?>                  {  background-color:#818181; }
+</style>
+
+<div id="styles-main-color">
+    <style type="text/css">
+	    <?php echo $themeOptions->jsString($selectors['active_color']); ?>              { color: #<?php echo $themeOptions->getActiveColor() ?>; }
+	    
+	    <?php echo $themeOptions->jsString($selectors['active_color_imp']); ?>          { color: #<?php echo $themeOptions->getActiveColor() ?>!important; }
+	  
+	    ::-moz-selection, ::selection { background-color: #<?php echo $themeOptions->getActiveColor(); ?>; }
+	    /* Active BG */
+	    <?php echo $themeOptions->jsString($selectors['active_bg']); ?>                 {  background-color: #<?php echo $themeOptions->getActiveColor(); ?>; }
+	    
+	    /* Active Border */
+	    <?php echo $themeOptions->jsString($selectors['active_border']); ?>             {  border-color: #<?php echo $themeOptions->getActiveColor(); ?>; }
+    </style>
+</div>
+<div id="styles-hover-color">
+    <style type="text/css">
+    	<?php echo $themeOptions->jsString($selectors['active_bg2']); ?>                {  background-color: #<?php echo $themeOptions->getHoverColor(); ?>; }
+    </style>
+</div>
+<div id="styles-bg">
+    <style>
+        body{
+        background-color:#<?php echo $themeOptions->getMainColor() ?>;
+        background-image: url(<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/idstore/'.$themeOptions->getBgPattern() ?>);
+        background-attachment: <?php echo $themeOptions->bgAttachment() ?>;
+        background-position: <?php echo $themeOptions->bgPositionX() ?> <?php echo $themeOptions->bgPositionY() ?>;
+        background-repeat: <?php echo $themeOptions->bgRepeat() ?>;
+        <?php if ($themeOptions->bgExpanding()== 1): ?>
+            background-size: cover;
+        <?php endif; ?>
+    }   
+    </style>
+</div>
+<script type="text/javascript">
+    var active_color_selector = '<?php echo $themeOptions->jsString($selectors['active_color']); ?> ';
+    var active_bg_selector = '<?php echo $themeOptions->jsString($selectors['active_bg']); ?> ';
+    var active_border_selector = '<?php echo $themeOptions->jsString($selectors['active_border']); ?>';
+    var active_color_default = '#<?php echo $themeOptions->getActiveColor(); ?>';
+    var bg_default = '#<?php echo $themeOptions->getMainColor(); ?>';
+    var pattern_default = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/idstore/'.$themeOptions->getBgPattern() ?>'; 
+</script>

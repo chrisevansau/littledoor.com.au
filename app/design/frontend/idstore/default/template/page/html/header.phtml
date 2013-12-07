@@ -1,0 +1,88 @@
+<?php $themeOptions = $this->helper('idstore') ?>
+<?php $headerType = $themeOptions->getHeaderType(); ?>
+<?php 
+	if($this->getRequest()->getParam('ht')) {
+		$headerType = $this->getRequest()->getParam('ht');
+		if($headerType < 1 || $headerType > 5) $headerType = 1;
+	}
+?>
+
+<?php if ($themeOptions->useFixedHeader()): ?>
+<div class="fixed-header-area">
+	<div class="container fixed-header">
+		<div class="row">
+			<div class="span4">
+				<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+			</div>
+			<div class="span8">
+				<?php echo $this->getChildHtml('topMenu') ?>
+			</div>
+		</div>
+	</div>
+</div>
+<?php endif ?>
+
+<div class="header-top header-variant<?php echo $headerType ?><?php if ($headerType == 1): ?> hidden-desktop<?php endif?>">
+	<div class="container">
+		<div class="row">
+			<div class="span3">
+		        <div class="store-switcher">
+		        	<?php echo $this->getChildHtml('store_language') ?>
+		        </div>
+	        </div>
+    		<div class="span4 header-phone"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></div>
+            <div class="span5">
+                <div class="search_form">
+                    <?php echo $this->getChildHtml('topSearch') ?>
+                </div>
+	            <?php echo $this->getChildHtml('top_cart'); ?>
+	            <div id="header-links"><?php echo $this->getChildHtml('topLinks') ?></div>
+            </div>
+    		
+		</div>
+	</div>
+</div>
+
+<div class="header-container variant<?php echo $headerType ?>">
+	<div class="container">
+	    <div class="row header">
+	        <div class="span5 logo-container">
+	        	<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+	        	<div class="currency-switcher"><?php //echo $this->getChildHtml('currency_switcher'); ?></div>
+	        </div>
+	        <?php if ($headerType == 1): ?>
+	        	<div class="store-switcher">
+		        	<?php echo $this->getChildHtml('store_language') ?>
+		        </div>
+		        <div class="span3 visible-desktop">
+			        <span class="search_text"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></span>
+			        <div class="search_form"><?php echo $this->getChildHtml('topSearch') ?></div>
+		        </div>
+		        <div class="span4 shopping_cart_wrap visible-desktop">
+		            <?php echo $this->getChildHtml('top_cart'); ?>
+		            <div id="header-links"><?php echo $this->getChildHtml('topLinks') ?></div>
+		        </div>
+	    	<?php elseif ( ($headerType == 2) || ($headerType == 5) ): ?>
+	    		<?php echo $this->getChildHtml('topMenu') ?>
+	    	<?php endif?>
+	        <div><?php echo $this->getChildHtml('topContainer'); ?></div>
+	    </div>
+	    <?php if ( ($headerType == 1) || ($headerType == 3) ): ?>
+	    <div class="row">
+	    	<div class="span12"><?php echo $this->getChildHtml('topMenu') ?></div>
+	    </div>
+	    <?php endif?>
+    </div>
+    <?php if ($headerType == 4): ?>
+	    <div class="row menu-wrapper">
+	    	<div class="span12"><?php echo $this->getChildHtml('topMenu') ?></div>
+	    </div>
+    <?php endif?>
+</div>
+<?php $enable_ajax = $themeOptions->ajaxIsEnabled() ?>
+<?php if ($enable_ajax): ?>
+<div class="category-overlay">
+    <div id="addedoverlay" style="display:none"> </div>
+    <div id="added" style="display:none"></div>
+</div>
+<?php endif ?>
